@@ -152,8 +152,6 @@ char **strtow2(char *, char);
 char *_memset(char *, char, unsigned int);
 void f_free(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-
-/*mem_func2*/
 int b_free(void **);
 
 /*more_func*/
