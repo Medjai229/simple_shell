@@ -14,7 +14,7 @@ int _myenv(info_t *info)
 
 /**
  * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
+ * @info: Structure containing potential arguments and Used to maintain
  * @name: env var name
  *
  * Return: the value
