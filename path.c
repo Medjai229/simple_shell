@@ -16,7 +16,7 @@ int is_cmd(info_t *info, char *path)
 	return (0);
 }
 
-char *dup_chars(char *pathstr, int startm, int stop)
+char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0, k = 0;
