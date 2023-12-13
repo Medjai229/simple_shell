@@ -1,13 +1,25 @@
 #include "shell.h"
 
-/***/
+/**
+ * _myhistory - displays the history list, one command by line, preceded
+ *              with line numbers, starting at 0.
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
+ */
 int _myhistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
 }
 
-/***/
+/**
+ * unset_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
+ *
+ * Return: Always 0 on success, 1 on error
+ */
 int unset_alias(info_t *info, char *str)
 {
 	char *p, c;
@@ -24,7 +36,13 @@ int unset_alias(info_t *info, char *str)
 	return (ret);
 }
 
-/***/
+/**
+ * set_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
+ *
+ * Return: Always 0 on success, 1 on error
+ */
 int set_alias(info_t *info, char *str)
 {
 	char *p;
@@ -39,7 +57,12 @@ int set_alias(info_t *info, char *str)
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 
-/***/
+/**
+ * print_alias - prints an alias string
+ * @node: the alias node
+ *
+ * Return: Always 0 on success, 1 on error
+ */
 int print_alias(list_t *node)
 {
 	char *p = NULL, *a = NULL;
@@ -57,7 +80,12 @@ int print_alias(list_t *node)
 	return (1);
 }
 
-/***/
+/**
+ * _myalias - mimics the alias builtin (man alias)
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
+ */
 int _myalias(info_t *info)
 {
 	int i = 0;
