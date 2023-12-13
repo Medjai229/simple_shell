@@ -200,16 +200,16 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* env2.c module */
-char **get_environ(info_t *);
+char **get_env(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
 /* file_io_functions.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+char *get_hist_file(info_t *info);
+int write_hist(info_t *info);
+int read_hist(info_t *info);
+int build_hist_list(info_t *info, char *buf, int linecount);
+int renumber_hist(info_t *info);
 
 /* liststr.c module */
 list_t *add_node(list_t **, const char *, int);
@@ -226,10 +226,10 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* chain.c */
-int is_chain(info_t *, char *, size_t *);
+int _ischain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+int rep_alias(info_t *);
+int rep_vars(info_t *);
+int rep_string(char **, char *);
 
 #endif /*SHELL_H*/
