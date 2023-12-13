@@ -15,7 +15,6 @@ ssize_t input_buffer(info_t *info, char **buf, size_t *len)
 
 	if (!*len)
 	{
-		/*b_free((void **)info->cmd_buf);*/
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -62,11 +61,11 @@ ssize_t get_input(info_t *info)
 		return (-1);
 	if (len)
 	{
-		j = i; /* init new iterator to current buf position */
-		p = buf + i; /* get pointer for return */
+		j = i;
+		p = buf + i;
 
 		check_chain(info, buf, &j, i, len);
-		while (j < len) /* iterate to semicolon or end */
+		while (j < len)
 		{
 			if (_ischain(info, buf, &j))
 				break;
