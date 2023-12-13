@@ -23,7 +23,7 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* for convert_number() */
+/* for convert_num() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
@@ -154,15 +154,15 @@ char **strtow2(char *, char);
 
 /* memory_functions */
 char *_memset(char *, char, unsigned int);
-void ffree(char **);
+void f_free(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* memory_functions2.c */
-int bfree(void **);
+int b_free(void **);
 
 /* more_functions.c */
 int interactive(info_t *);
-int is_delim(char, char *);
+int _isdelim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
@@ -170,8 +170,8 @@ int _atoi(char *);
 int _erratoi(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+char *convert_num(long int, int, int);
+void rm_comments(char *);
 
 /* builtin_emulators.c */
 int _myexit(info_t *);
@@ -219,7 +219,7 @@ int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
 /* liststr2.c module */
-size_t list_len(const list_t *);
+size_t list_length(const list_t *);
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
