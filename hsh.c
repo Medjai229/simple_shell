@@ -17,7 +17,7 @@ int hsh(info_t *info, char **av)
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
-		_eputchar(BUFFER_FLUSH);
+		_eputchar(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
 		{
@@ -30,7 +30,7 @@ int hsh(info_t *info, char **av)
 			_putchar('\n');
 		free_info(info, 0);
 	}
-	write_hist(info);
+	write_history(info);
 	free_info(info, 1);
 	if (!interactive(info) && info->status)
 		exit(info->status);
@@ -95,7 +95,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!_isdelim(info->arg[i], " \t\n"))
+		if (!is_delim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -132,18 +132,20 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_env(info)) == -1)
+		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

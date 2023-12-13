@@ -39,8 +39,8 @@ void set_info(info_t *info, char **av)
 			;
 		info->argc = i;
 
-		rep_alias(info);
-		rep_vars(info);
+		replace_alias(info);
+		replace_vars(info);
 	}
 }
 
@@ -51,7 +51,7 @@ void set_info(info_t *info, char **av)
  */
 void free_info(info_t *info, int all)
 {
-	f_free(info->argv);
+	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all)
@@ -64,11 +64,11 @@ void free_info(info_t *info, int all)
 			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
-		f_free(info->environ);
+		ffree(info->environ);
 			info->environ = NULL;
-		b_free((void **)info->cmd_buf);
+		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
-		_putchar(BUFFER_FLUSH);
+		_putchar(BUF_FLUSH);
 	}
 }
